@@ -26,18 +26,22 @@ public class Simulation extends World {
         addObject(new Stats(), new Vector(0, 0, 0));
     }
 
+    private int acts = 0;
+
     @Override
     public void act() {
-        generateWind();
+        if(acts % 5 == 0) { //num of act loops modulo 5; runs the code in the if statement every 5 acts or 12 times/sec
+            generateWind();
+        }
+        acts++;
     }
 
     private void generateWind() {
-        if(random) {
-            double vary = Math.random() * variance;
-            windSpeed = windSpeed + (vary - (0.499 * variance)); // + Utils.randDouble(-variance, variance);
+        if(random) { //state variable; determines whether or not to randomize the wind or to allow manual control
+            double vary = Math.random() * variance; //randomly generated variance
+            windSpeed = windSpeed + (vary - (0.5 * variance)); //randomly changes the wind from its current value
         } else {
-            DecimalFormat df = new DecimalFormat("#.##");
-            windSpeed = Double.parseDouble(df.format(windSpeed));
+            windSpeed = Double.parseDouble(new DecimalFormat("#.##").format(windSpeed));
         }
     }
 

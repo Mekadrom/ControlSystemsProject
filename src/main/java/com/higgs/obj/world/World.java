@@ -20,7 +20,7 @@ public abstract class World {
     public World(int width, int height) {
         this.width = width;
         this.height = height;
-        Simulator.window.setSize(new Dimension(getWidth(), getHeight()));
+        Simulator.getInstance().window.setSize(new Dimension(getWidth(), getHeight()));
         setImage(new GameImage(width, height));
     }
 

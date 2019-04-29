@@ -6,6 +6,7 @@ import main.java.com.higgs.utils.GameImage;
 import main.java.com.higgs.utils.Vector;
 
 import java.awt.*;
+import java.text.DecimalFormat;
 
 public class Stats extends Actor {
     private int width = 200;
@@ -20,13 +21,13 @@ public class Stats extends Actor {
         image.setColor(Color.WHITE);
         image.fill();
         image.setColor(Color.BLACK);
-        image.drawString("windspeed: " + ((Simulation)getWorld()).getWindSpeed(), 0, 20);
+        image.drawString("windspeed: " + ((Simulation)getWorld()).getWindSpeed() /* (50/0.72)*/, 0, 20);
 
         try {
             Windmill windmill = (Windmill) getWorld().getActorsAt(getWorld().getWidth() / 2, getWorld().getHeight() / 2).get(0);
-            image.drawString("velocity: " + windmill.getOmega(), 0, 35);
+            image.drawString("velocity: " + Double.parseDouble(new DecimalFormat("#.#####").format(windmill.getOmega())), 0, 35);
             if(windmill.isBraking()) {
-                image.setColor(Color.GREEN);
+                image.setColor(Color.RED);
                 image.drawString("braking", 0, 50);
             }
         } catch(ClassCastException ignore) { }

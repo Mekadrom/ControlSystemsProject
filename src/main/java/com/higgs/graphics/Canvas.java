@@ -26,11 +26,11 @@ public class Canvas extends JPanel {
     }
 
     private BufferedImage paint() {
-        BufferedImage imageResult = new BufferedImage(Simulator.window.getWidth(), Simulator.window.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage imageResult = new BufferedImage(Simulator.getInstance().window.getWidth(), Simulator.getInstance().window.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = imageResult.createGraphics();
 
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0, Simulator.window.getWidth(), Simulator.window.getHeight());
+        g.fillRect(0, 0, Simulator.getInstance().window.getWidth(), Simulator.getInstance().window.getHeight());
         g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
         if(Simulator.getInstance().getWorld() != null) {

@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Simulator {
-    public static Viewport window;
+    public Viewport window;
     private static Simulator instance;
 
     private World world;
